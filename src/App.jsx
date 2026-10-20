@@ -5,10 +5,12 @@ const wa = (m) => `https://wa.me/${WA}?text=${encodeURIComponent(m)}`
 const TEL = 'tel:+919131929456'
 const MAIL = 'mailto:nexusoxygen.idr@gmail.com'
 // ===== FACTS TO CONFIRM WITH NEXUS: replace the [bracketed] values here, once, and they update everywhere =====
-const F = { noon: '[12 noon]', same: '[the same day]', hours: '[Mon–Sat, 8 am–8 pm]', travel: '20 minutes from Pithampur [confirm travel time]', indore: '[the next working day]', min: '[Confirm, e.g. 2 cylinders per delivery]', trial: '[confirm trial offer]', term: '[confirm term]', credit: '[confirm credit days]', deposit: '[Confirm deposit terms]', cert: '[confirm]', grades: '[confirm grades]', legal: '[Pvt Ltd — confirm legal name]', gstin: '[number]' }
+const F = { noon: '12 noon', same: 'the same day', hours: 'Mon–Sat, 8 am–8 pm', travel: '20 minutes from Pithampur', indore: 'the next working day', min: '2 cylinders per delivery',
+  // Still highlighted: the PDF gives no value for these. Replace the [bracketed] text and the highlight disappears.
+  term: '[confirm term]', credit: '[confirm credit days]', deposit: '[Confirm deposit terms]', legal: '[Pvt Ltd — confirm legal name]', gstin: '[number]' }
 const T = ({ children }) => String(children).split(/(\[[^\]]+\])/).map((x, i) => (x.startsWith('[') && x.endsWith(']') ? <mark key={i} className="tbc">{x}</mark> : x))
 const HI = {
-  tag: 'धारावाहिक: निरंतरता। शुद्धता। जुड़ाव।', h1: 'जिस दिन ऑर्डर, उसी दिन गैस रिफिल।',
+  tag: 'जीवन की सांस। देखभाल का वादा।', h1: 'जिस दिन ऑर्डर, उसी दिन गैस रिफिल।',
   lead: 'पीथमपुर, इंदौर और धार के लिए ऑक्सीजन, आर्गन, नाइट्रोजन और CO₂ सिलेंडर।', btn: 'आज का रेट WhatsApp पर पाएं',
   Continuity: 'आपकी सप्लाई कभी नहीं रुकेगी।', Purity: 'हर बार पूरा भराव, सही ग्रेड।', Connection: 'एक नंबर, सीधी बात।', close: 'गैस खत्म होने वाली है? अभी मैसेज करें।',
 }
@@ -34,15 +36,15 @@ const Ic = ({ n, s = 22 }) => (
 const nav = [['Home', '#home'], ['Gases We Supply', '#gases'], ['Why Nexus', '#why'], ['Industries', '#industries'], ['Contact', '#contact']]
 
 const gases = [
-  ['O₂', 'Industrial Oxygen', 'For gas cutting, brazing, welding and heat treatment. Steady pressure, full fills, on time.', 'Oxygen', 'oxygen', 'Industrial grade · per cylinder fill'],
-  ['Ar', 'Argon', 'For MIG and TIG welding of stainless steel and aluminium. Argon–CO₂ mixes for cleaner welds.', 'Argon', 'argon', `Industrial and high purity ${F.grades} · per m³`],
-  ['N₂', 'Nitrogen', 'For pharma inerting, purging, food packing and tyre curing. Purity certificate on request.', 'Nitrogen', 'nitrogen', `Industrial and high purity ${F.grades}`],
-  ['CO₂', 'Carbon Dioxide', 'For soda and beverage bottling, food use and welding mixes.', 'CO₂', 'CO₂', `Beverage and industrial grade ${F.grades} · per kg`],
+  ['O₂', 'Industrial & Medical Oxygen', 'For gas cutting, brazing, welding and heat treatment, and for medical use. Steady pressure, full fills, on time.', 'Oxygen', 'oxygen', 'Industrial and medical use [confirm medical grade details] · per cylinder fill'],
+  ['Ar', 'Argon', 'For MIG and TIG welding of stainless steel and aluminium. Argon–CO₂ mixes for cleaner welds.', 'Argon', 'argon', `Industrial and high purity · per m³`],
+  ['N₂', 'Nitrogen', 'For pharma inerting, purging, food packing and tyre curing. Purity certificate on request.', 'Nitrogen', 'nitrogen', `Industrial and high purity`],
+  ['CO₂', 'Carbon Dioxide', 'For soda and beverage bottling, food use and welding mixes.', 'CO₂', 'CO₂', `Beverage and industrial grade · per kg`],
 ]
 
 const pillars = [
   ['Continuity', 'Your supply doesn\'t break', `Order before ${F.noon} and get your refills ${F.same}. We plan refills before you run out, so a late cylinder never stops a job.`, 'Delivery time and order cut-off', 'cal'],
-  ['Purity', 'Full fills, right grade, every time', `Every cylinder is filled to the right pressure and checked before it leaves. Purity certificates are available for nitrogen and argon ${F.cert}.`, 'Grades and certificates offered', 'drop'],
+  ['Purity', 'Full fills, right grade, every time', `Every cylinder is filled to the right pressure and checked before it leaves. Purity certificates are available for nitrogen and argon.`, 'Grades and certificates offered', 'drop'],
   ['Connection', 'One number, a real person', 'Orders, rates and emergencies all go to one WhatsApp number. We track every cylinder in and out, so you never pay for empties we failed to collect.', 'WhatsApp number, cylinder tracking', 'link'],
 ]
 
@@ -60,23 +62,24 @@ const industries = [
   ['Leaf spring and structure makers', 'Regular refill plans for daily cutting and welding.'],
   ['Pharma and chemical units', 'Nitrogen with purity certificates for audits.'],
   ['Food and beverage units', 'Nitrogen for packing and CO₂ for bottling.'],
+  ['Hospitals and laboratories', 'Oxygen for medical use [confirm medical supply details].'],
   ['Gas dealers', 'Wholesale cylinders and steady allocation in peak months.'],
 ]
 
 const areas = ['Pithampur Sector 1', 'Sector 2', 'Sector 3', 'Sagore', 'Betma', 'Mhow', 'Rau', 'Indore', 'Dhar', 'Dewas on request']
 
 const faqs = [
-  ['Which gases does Nexus Oxygen supply?', 'Industrial oxygen, argon and argon–CO₂ mixes, nitrogen and CO₂ in cylinders. Need a special mix, purity or cylinder size? Message us and we\'ll tell you what we can supply.'],
+  ['Which gases does Nexus Oxygen supply?', 'Oxygen for industrial and medical use, argon and argon–CO₂ mixes, nitrogen and CO₂ in cylinders. Need a special mix, purity or cylinder size? Message us and we\'ll tell you what we can supply.'],
   ['Which areas do you serve?', 'Pithampur, Sagore, Betma, Mhow, Rau, Indore and Dhar, with Dewas on request. Outside these areas, message us your location and we\'ll tell you the delivery day.'],
   ["How do I request today's rates?", 'WhatsApp or call +91 96442 69799 or +91 91319 29456 with the gas, the number of cylinders and your area.'],
   ['How fast can you deliver?', `Orders placed before ${F.noon} reach Pithampur Sectors 1–3 ${F.same}. Indore and Dhar deliveries go out ${F.indore}.`],
-  ['What is the minimum order?', `${F.min}. Message us for smaller one-off needs.`],
+  ['What is the minimum order?', `The minimum order is ${F.min}. Message us for smaller one-off needs.`],
   ['Can I arrange regular refills?', 'Yes. Regular users can fix a weekly or monthly refill plan so stock never runs out.'],
   ['Do I need to own cylinders?', `No. You can use our cylinders against a refundable deposit, or we can refill your own tested cylinders. ${F.deposit}`],
   ['How do you charge?', 'Oxygen and CO₂ per cylinder fill or per kg, argon and nitrogen per m³ or per fill. Rates depend on volume; regular users get a rate contract.'],
   ['Do you give credit?', `Regular customers on a rate contract can get ${F.credit}. New customers pay on delivery for the first orders.`],
-  ['Do you supply medical oxygen?', 'Not at present. We supply industrial gases only.'],
-  ['Can I request a purity certificate?', `Yes, for nitrogen and argon lots ${F.cert}. Ask when you order.`],
+  ['Do you supply medical oxygen?', 'Yes. Our oxygen is supplied for both industrial and medical use [confirm medical grade and licence details]. Tell us which you need when you order.'],
+  ['Can I request a purity certificate?', `Yes, for nitrogen and argon lots. Ask when you order.`],
   ['What happens to empty cylinders?', 'We collect empties on every delivery trip and record them, so you never pay holding charges for cylinders we failed to pick up.'],
 ]
 
@@ -90,7 +93,7 @@ function Header({ hi, setHi }) {
     <header className="hdr">
       <div className="wrap hdr-in">
         <a href="#home" className="brand" aria-label="Nexus Oxygen home">
-          <img src="/assets/nexus-oxygen-logo.png" width="1120" height="983" alt="Nexus Oxygen logo with the tagline Dharavahik: Continuity. Purity. Connection." />
+          <img src="/assets/nexus-oxygen-logo.png" width="1120" height="900" alt="Nexus Oxygen logo" />
         </a>
         <nav id="nav" className={`nav ${open ? 'open' : ''}`} aria-label="Primary">
           {nav.map(([t, h]) => <a key={h} href={h} onClick={() => setOpen(false)}>{t}</a>)}
@@ -133,8 +136,8 @@ function CopyEmail() {
 }
 
 const schema = [{
-  '@context': 'https://schema.org', '@type': 'LocalBusiness', name: 'Nexus Oxygen', slogan: 'Dharavahik: Continuity. Purity. Connection.',
-  description: 'Industrial gas supplier of oxygen, argon, nitrogen and CO2 cylinders for Pithampur, Indore, Mhow and Dhar.',
+  '@context': 'https://schema.org', '@type': 'LocalBusiness', name: 'Nexus Oxygen', slogan: 'The Breath of Life. The Promise of Care.',
+  description: 'Supplier of industrial and medical oxygen, argon, nitrogen and CO2 cylinders for Pithampur, Indore, Mhow and Dhar.',
   telephone: ['+91-9644269799', '+91-9131929456'], email: 'nexusoxygen.idr@gmail.com',
   address: { '@type': 'PostalAddress', streetAddress: '111, Post Office Road', addressLocality: 'Mhow', addressRegion: 'Madhya Pradesh', postalCode: '453441', addressCountry: 'IN' },
   areaServed: ['Pithampur', 'Indore', 'Mhow', 'Dhar', 'Rau', 'Dewas'],
@@ -153,10 +156,10 @@ export default function App() {
         <section className="hero">
           <div className="wrap">
             <div className="hero-copy">
-              <p className="tagline-h">{hi ? HI.tag : 'Dharavahik: Continuity. Purity. Connection.'}</p>
-              <p className="eyebrow">INDUSTRIAL GAS SUPPLIER · MHOW, MADHYA PRADESH</p>
+              <p className="tagline-h">{hi ? HI.tag : 'The Breath of Life. The Promise of Care.'}</p>
+              <p className="eyebrow">INDUSTRIAL &amp; MEDICAL OXYGEN · MHOW, MADHYA PRADESH</p>
               <h1>{hi ? HI.h1 : 'Gas refills that arrive the day you order.'}</h1>
-              <p className="lead">{hi ? HI.lead : <><T>{`Industrial oxygen, argon, nitrogen and CO₂ cylinders for fabrication shops, factories and plants across Pithampur, Indore and nearby industrial areas. Order on WhatsApp before ${F.noon} and get your refills ${F.same}.`}</T></>}</p>
+              <p className="lead">{hi ? HI.lead : <><T>{`Oxygen for industry and medical use, plus argon, nitrogen and CO₂ cylinders for fabrication shops, factories and plants across Pithampur, Indore and nearby areas. Order on WhatsApp before ${F.noon} and get your refills ${F.same}.`}</T></>}</p>
               <div className="btns">
                 <Btn href={wa(RATE)}><Ic n="chat" s={20} />{hi ? HI.btn : "Get Today's Rate on WhatsApp"}</Btn>
                 <Btn href={TEL} kind="ghost"><Ic n="phone" s={20} />Call Now</Btn>
@@ -169,7 +172,7 @@ export default function App() {
 
         <section className="strip" aria-label="Highlights">
           <div className="wrap strip-g">
-            {[['pin', `Local office in Mhow, ${F.travel}`], ['clock', `Same-day refills in Sectors 1–3 ${'[confirm]'}`], ['cyl', 'Four gases from one supplier'], ['phone', 'One WhatsApp number for orders and rates']].map(([n, t]) => (
+            {[['pin', `Local office in Mhow, ${F.travel}`], ['clock', `Same-day refills in Sectors 1–3`], ['cyl', 'Four gases from one supplier'], ['phone', 'One WhatsApp number for orders and rates']].map(([n, t]) => (
               <div key={t} className="strip-i"><span className="ico"><Ic n={n} /></span><p><T>{t}</T></p></div>
             ))}
           </div>
@@ -199,7 +202,7 @@ export default function App() {
 
         <section className="sec alt" id="why">
           <div className="wrap">
-            <Head title="Dharavahik means it never stops." text="Your work depends on a dependable gas supply. Nexus Oxygen focuses on continuity, purity and connection." />
+            <Head title="The Breath of Life. The Promise of Care." text="Your work depends on a dependable gas supply. Nexus Oxygen focuses on continuity, purity and connection." />
             <div className="grid3 why">
               {pillars.map(([t, h, x, pr, n]) => (
                 <div className="pillar" key={t}>
@@ -226,7 +229,7 @@ export default function App() {
                 </li>
               ))}
             </ol>
-            <p className="note"><T>{`First order? Ask for the trial rate on your first fill ${F.trial}.`}</T></p>
+            <p className="note"><T>{`First order? Ask for the trial rate on your first fill.`}</T></p>
           </div>
         </section>
 
@@ -289,9 +292,9 @@ export default function App() {
         <section className="sec alt about" id="about">
           <div className="wrap faq-w">
             <h2>Industrial gas supplier for Pithampur, Indore and Mhow</h2>
-            <p>Nexus Oxygen is an industrial gas supplier based in Mhow, District Indore, serving the factories, fabrication shops and plants of Pithampur Industrial Area, Indore and Dhar. We supply industrial oxygen, argon, nitrogen and CO₂ in cylinders, delivered to your gate and refilled on a schedule that fits your work.</p>
+            <p>Nexus Oxygen is an industrial gas supplier based in Mhow, District Indore, serving the factories, fabrication shops and plants of Pithampur Industrial Area, Indore and Dhar. We supply oxygen for industrial and medical use, plus argon, nitrogen and CO₂ in cylinders, delivered to your gate and refilled on a schedule that fits your work.</p>
             <p>Most of our customers cut and weld every day. For them we supply oxygen cylinders for gas cutting, brazing and heat treatment, and argon and argon–CO₂ mixes for MIG and TIG welding of stainless steel and aluminium. Pharma, chemical, food and tyre units use our nitrogen cylinders for purging, blanketing and packing, and beverage and soda units use our CO₂.</p>
-            <p><T>{`Our promise is Dharavahik: continuity, purity and connection. Continuity means your supply does not break: order on WhatsApp before ${F.noon} and refills reach Pithampur Sectors 1, 2 and 3 ${F.same}. Purity means full fills at the right pressure and grade, with certificates available for nitrogen and argon ${F.cert}. Connection means one number for orders, rates and emergencies, and empties collected on every trip.`}</T></p>
+            <p><T>{`Our promise is the breath of life and the promise of care, built on continuity, purity and connection. Continuity means your supply does not break: order on WhatsApp before ${F.noon} and refills reach Pithampur Sectors 1, 2 and 3 ${F.same}. Purity means full fills at the right pressure and grade, with certificates available for nitrogen and argon. Connection means one number for orders, rates and emergencies, and empties collected on every trip.`}</T></p>
             <h3>Oxygen and argon gas refilling in Pithampur</h3>
             <p>Whether you run a small fabrication shop in Sector 1 or a production line in Sector 3, you can order oxygen gas refilling, argon gas cylinders and welding gas from one supplier. Regular users can fix their rate with a monthly contract and scheduled refills, and gas dealers can buy at wholesale rates with steady allocation.</p>
             <p>Call +91 91319 29456 or WhatsApp +91 96442 69799 for today's rate. Our office is at 111, Post Office Road, Mhow, District Indore (M.P.) 453441.</p>
@@ -322,8 +325,8 @@ export default function App() {
       <footer className="ftr">
         <div className="wrap ftr-g">
           <div>
-            <div className="logo-panel"><img src="/assets/nexus-oxygen-logo.png" width="1120" height="983" alt="Nexus Oxygen logo" loading="lazy" /></div>
-            <p className="tag-l">Nexus Oxygen — Dharavahik: Continuity. Purity. Connection.</p>
+            <div className="logo-panel"><img src="/assets/nexus-oxygen-logo.png" width="1120" height="900" alt="Nexus Oxygen logo" loading="lazy" /></div>
+            <p className="tag-l">Nexus Oxygen — The Breath of Life. The Promise of Care.</p>
           </div>
           <div>
             <h4>Quick links</h4>
@@ -341,11 +344,11 @@ export default function App() {
           </div>
           <div>
             <h4>What we supply</h4>
-            <p>Industrial oxygen, argon, nitrogen and CO₂ cylinders. Industrial gases only.</p>
+            <p>Oxygen for industrial and medical use, plus argon, nitrogen and CO₂ cylinders.</p>
             <p>Pithampur, Sagore, Betma, Mhow, Rau, Indore and Dhar, with Dewas on request.</p>
           </div>
         </div>
-        <div className="wrap copy"><T>{`© 2026 Nexus Oxygen ${F.legal} · Industrial gases only · GSTIN ${F.gstin}`}</T></div>
+        <div className="wrap copy"><T>{`© 2026 Nexus Oxygen ${F.legal} · GSTIN ${F.gstin}`}</T></div>
       </footer>
 
       <div className="bar" role="region" aria-label="Quick contact">
