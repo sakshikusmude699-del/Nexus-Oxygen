@@ -226,3 +226,7 @@ html{-webkit-tap-highlight-color:transparent}
 .bar{box-shadow:0 -6px 18px rgba(7,59,102,.12)}.bar .btn{font-size:16px}
 .ftr-g{gap:28px;padding-top:40px}
 }
+
+/* dealer panel (dark): make the bullet points readable */
+.panel:nth-child(2) .pts,.panel:nth-child(2) .pts li{color:#fff}
+.panel:nth-child(2) .pts li::before{background:var(--cyan)}
